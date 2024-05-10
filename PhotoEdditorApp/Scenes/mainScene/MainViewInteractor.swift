@@ -5,7 +5,7 @@ import Foundation
 // MARK: - MainBusinessLogic
 
 protocol MainBusinessLogic {
-    func showData()
+    func showInitialData()
 }
 
 // MARK: -  MainSceneInteractor
@@ -26,8 +26,8 @@ final class MainSceneInteractor {
 // MARK: - Confirming to interactor protocol
 
 extension MainSceneInteractor: MainBusinessLogic {
-    func showData() {
-    
+    func showInitialData() {
+        presenter.presentScreenInitialData()
     }
 }
 

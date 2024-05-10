@@ -3,7 +3,10 @@
 import UIKit
 
 protocol DisplayMainViewController: AnyObject {
-    
+    func displayInitialData(with viewModel: MainView.ViewModel)
+    func presentMediaLibraryPicker()
+    func presentCameraPhoto()
+    func cleanPhotoImage()
 }
 
 final class MainViewController: UIViewController {
@@ -32,12 +35,48 @@ final class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        interactor.showInitialData()
     }
-
-
 }
 
+// MARK: - DisplayMainViewController
+
 extension MainViewController: DisplayMainViewController {
+    func displayInitialData(with viewModel: MainView.ViewModel) {
+        contentView.configure(with: viewModel)
+    }
+    
+    func presentMediaLibraryPicker() {
+        let imagePicker = UIImagePickerController()
+         imagePicker.delegate = self
+         imagePicker.sourceType = .photoLibrary
+         present(imagePicker, animated: true, completion: nil)
+    }
+    
+    func presentCameraPhoto() {
+        let imagePicker = UIImagePickerController()
+         imagePicker.delegate = self
+         imagePicker.sourceType = .camera
+         present(imagePicker, animated: true, completion: nil)
+    }
+    
+    func cleanPhotoImage() {
+        contentView.removeSelectedPhoto()
+    }
+}
+
+// MARK: - UIImagePickerControllerDelegate & UINavigationControllerDelegate
+
+extension MainViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let selectedImage = info[.originalImage] as? UIImage {
+            contentView.updateImagePhoto(with: selectedImage)
+        }
+        dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true, completion: nil)
+    }
     
 }
