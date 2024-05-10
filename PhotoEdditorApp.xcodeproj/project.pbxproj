@@ -19,6 +19,18 @@
 		570F9DCE2BEE9F8900346C63 /* MainViewInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570F9DCD2BEE9F8900346C63 /* MainViewInteractor.swift */; };
 		570F9DD02BEE9FD500346C63 /* MainViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570F9DCF2BEE9FD500346C63 /* MainViewPresenter.swift */; };
 		570F9DD22BEEA56000346C63 /* MainViewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570F9DD12BEEA56000346C63 /* MainViewFactory.swift */; };
+		570F9DD52BEEA68900346C63 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 570F9DD42BEEA68900346C63 /* SnapKit */; };
+		570F9DD72BEEA68900346C63 /* SnapKit-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 570F9DD62BEEA68900346C63 /* SnapKit-Dynamic */; };
+		570F9DD92BEEA92100346C63 /* AppPallete.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570F9DD82BEEA92100346C63 /* AppPallete.swift */; };
+		570F9DDB2BEEA98E00346C63 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 570F9DDA2BEEA98E00346C63 /* Colors.xcassets */; };
+		570F9DDE2BEEAABE00346C63 /* ViewWithText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570F9DDD2BEEAABE00346C63 /* ViewWithText.swift */; };
+		570F9DE02BEEAAED00346C63 /* ViewWithTextViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570F9DDF2BEEAAED00346C63 /* ViewWithTextViewModel.swift */; };
+		570F9DE32BEEAB6400346C63 /* MainButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570F9DE22BEEAB6400346C63 /* MainButton.swift */; };
+		570F9DE52BEEAB8900346C63 /* MainButtonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570F9DE42BEEAB8900346C63 /* MainButtonViewModel.swift */; };
+		570F9DE72BEEABAD00346C63 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570F9DE62BEEABAD00346C63 /* String+Extensions.swift */; };
+		570F9DE92BEEC62D00346C63 /* AppFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570F9DE82BEEC62D00346C63 /* AppFonts.swift */; };
+		570F9DEB2BEECA1800346C63 /* SizeCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570F9DEA2BEECA1800346C63 /* SizeCalculator.swift */; };
+		570F9DED2BEECB2200346C63 /* AppImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570F9DEC2BEECB2200346C63 /* AppImages.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +48,16 @@
 		570F9DCD2BEE9F8900346C63 /* MainViewInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewInteractor.swift; sourceTree = "<group>"; };
 		570F9DCF2BEE9FD500346C63 /* MainViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewPresenter.swift; sourceTree = "<group>"; };
 		570F9DD12BEEA56000346C63 /* MainViewFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewFactory.swift; sourceTree = "<group>"; };
+		570F9DD82BEEA92100346C63 /* AppPallete.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppPallete.swift; sourceTree = "<group>"; };
+		570F9DDA2BEEA98E00346C63 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
+		570F9DDD2BEEAABE00346C63 /* ViewWithText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewWithText.swift; sourceTree = "<group>"; };
+		570F9DDF2BEEAAED00346C63 /* ViewWithTextViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewWithTextViewModel.swift; sourceTree = "<group>"; };
+		570F9DE22BEEAB6400346C63 /* MainButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainButton.swift; sourceTree = "<group>"; };
+		570F9DE42BEEAB8900346C63 /* MainButtonViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainButtonViewModel.swift; sourceTree = "<group>"; };
+		570F9DE62BEEABAD00346C63 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
+		570F9DE82BEEC62D00346C63 /* AppFonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFonts.swift; sourceTree = "<group>"; };
+		570F9DEA2BEECA1800346C63 /* SizeCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SizeCalculator.swift; sourceTree = "<group>"; };
+		570F9DEC2BEECB2200346C63 /* AppImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppImages.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,6 +65,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				570F9DD52BEEA68900346C63 /* SnapKit in Frameworks */,
+				570F9DD72BEEA68900346C63 /* SnapKit-Dynamic in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -100,6 +124,11 @@
 			children = (
 				570F9DB82BEE9AC300346C63 /* Info.plist */,
 				570F9DB32BEE9AC300346C63 /* Assets.xcassets */,
+				570F9DD82BEEA92100346C63 /* AppPallete.swift */,
+				570F9DDA2BEEA98E00346C63 /* Colors.xcassets */,
+				570F9DE82BEEC62D00346C63 /* AppFonts.swift */,
+				570F9DEA2BEECA1800346C63 /* SizeCalculator.swift */,
+				570F9DEC2BEECB2200346C63 /* AppImages.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -119,6 +148,8 @@
 		570F9DC22BEE9E0300346C63 /* Protocols and Elements */ = {
 			isa = PBXGroup;
 			children = (
+				570F9DE12BEEAB5500346C63 /* MainButton */,
+				570F9DDC2BEEAAA900346C63 /* ViewWithText */,
 				570F9DC42BEE9E9C00346C63 /* Router.swift */,
 				570F9DC62BEE9EC300346C63 /* Factory.swift */,
 				570F9DC82BEE9EE200346C63 /* ViewModelConfigurable.swift */,
@@ -129,6 +160,7 @@
 		570F9DC32BEE9E1000346C63 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				570F9DE62BEEABAD00346C63 /* String+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -139,6 +171,24 @@
 				570F9DCB2BEE9F2C00346C63 /* MainView.swift */,
 			);
 			path = views;
+			sourceTree = "<group>";
+		};
+		570F9DDC2BEEAAA900346C63 /* ViewWithText */ = {
+			isa = PBXGroup;
+			children = (
+				570F9DDD2BEEAABE00346C63 /* ViewWithText.swift */,
+				570F9DDF2BEEAAED00346C63 /* ViewWithTextViewModel.swift */,
+			);
+			path = ViewWithText;
+			sourceTree = "<group>";
+		};
+		570F9DE12BEEAB5500346C63 /* MainButton */ = {
+			isa = PBXGroup;
+			children = (
+				570F9DE22BEEAB6400346C63 /* MainButton.swift */,
+				570F9DE42BEEAB8900346C63 /* MainButtonViewModel.swift */,
+			);
+			path = MainButton;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -157,6 +207,10 @@
 			dependencies = (
 			);
 			name = PhotoEdditorApp;
+			packageProductDependencies = (
+				570F9DD42BEEA68900346C63 /* SnapKit */,
+				570F9DD62BEEA68900346C63 /* SnapKit-Dynamic */,
+			);
 			productName = PhotoEdditorApp;
 			productReference = 570F9DA72BEE9AC200346C63 /* PhotoEdditorApp.app */;
 			productType = "com.apple.product-type.application";
@@ -185,6 +239,9 @@
 				Base,
 			);
 			mainGroup = 570F9D9E2BEE9AC200346C63;
+			packageReferences = (
+				570F9DD32BEEA68900346C63 /* XCRemoteSwiftPackageReference "SnapKit" */,
+			);
 			productRefGroup = 570F9DA82BEE9AC200346C63 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -199,6 +256,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				570F9DDB2BEEA98E00346C63 /* Colors.xcassets in Resources */,
 				570F9DB42BEE9AC300346C63 /* Assets.xcassets in Resources */,
 				570F9DB72BEE9AC300346C63 /* Base in Resources */,
 			);
@@ -211,15 +269,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				570F9DE02BEEAAED00346C63 /* ViewWithTextViewModel.swift in Sources */,
 				570F9DC52BEE9E9C00346C63 /* Router.swift in Sources */,
+				570F9DE32BEEAB6400346C63 /* MainButton.swift in Sources */,
 				570F9DCC2BEE9F2C00346C63 /* MainView.swift in Sources */,
+				570F9DE72BEEABAD00346C63 /* String+Extensions.swift in Sources */,
 				570F9DAF2BEE9AC200346C63 /* MainViewController.swift in Sources */,
 				570F9DAB2BEE9AC200346C63 /* AppDelegate.swift in Sources */,
+				570F9DD92BEEA92100346C63 /* AppPallete.swift in Sources */,
 				570F9DAD2BEE9AC200346C63 /* SceneDelegate.swift in Sources */,
+				570F9DED2BEECB2200346C63 /* AppImages.swift in Sources */,
+				570F9DE92BEEC62D00346C63 /* AppFonts.swift in Sources */,
 				570F9DC72BEE9EC300346C63 /* Factory.swift in Sources */,
 				570F9DCE2BEE9F8900346C63 /* MainViewInteractor.swift in Sources */,
 				570F9DC92BEE9EE200346C63 /* ViewModelConfigurable.swift in Sources */,
+				570F9DE52BEEAB8900346C63 /* MainButtonViewModel.swift in Sources */,
+				570F9DDE2BEEAABE00346C63 /* ViewWithText.swift in Sources */,
 				570F9DD22BEEA56000346C63 /* MainViewFactory.swift in Sources */,
+				570F9DEB2BEECA1800346C63 /* SizeCalculator.swift in Sources */,
 				570F9DD02BEE9FD500346C63 /* MainViewPresenter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -443,6 +510,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		570F9DD32BEEA68900346C63 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.7.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		570F9DD42BEEA68900346C63 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 570F9DD32BEEA68900346C63 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+		570F9DD62BEEA68900346C63 /* SnapKit-Dynamic */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 570F9DD32BEEA68900346C63 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = "SnapKit-Dynamic";
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 570F9D9F2BEE9AC200346C63 /* Project object */;
 }
