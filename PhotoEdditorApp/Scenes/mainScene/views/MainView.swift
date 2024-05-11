@@ -14,23 +14,35 @@ final class MainView: UIView {
         static let buttonsTopOffset: CGFloat = 40
         static let buttonsSidesInsets: CGFloat = 25
         static let photoImageViewTopOffset: CGFloat = 25
-        static let bottomButtonStackTopOffset: CGFloat = 15
-        static let bottomButtonStackSpacing: CGFloat = 15
+        static let stacksTopOffset: CGFloat = 15
+        static let stacksHorizontalInsets: CGFloat = 25
     }
     
     // MARK: - Properties
+    
+    var isEnableToEddit: Bool {
+        return (photoImageView.image == AppImages.photoPlaceholder) ? false : true
+    }
     
     private lazy var titleLabel = ViewWithText()
     private lazy var selectLibraryPhotoButton = MainButton()
     private lazy var takeCameraPhotoButton = MainButton()
     private lazy var photoImageView = UIImageView()
-    private lazy var editButton = MainButton()
+    private lazy var drawButton = MainButton()
     private lazy var removeButton = MainButton()
     private lazy var saveButton = MainButton()
+    private lazy var addFilterButton = MainButton()
+    private lazy var addTextButton = MainButton()
     
-    private lazy var bottomButtonStack: UIStackView = {
-        let stack = UIStackView(arrangedSubviews: [removeButton, saveButton, editButton])
-        stack.spacing = Constants.bottomButtonStackSpacing
+    private lazy var edditingActionsStack: UIStackView = {
+        let stack = UIStackView(arrangedSubviews: [drawButton, addFilterButton, addTextButton])
+        stack.distribution = .equalSpacing
+        return stack
+    }()
+    
+    private lazy var totalActionsStack: UIStackView = {
+        let stack = UIStackView(arrangedSubviews: [removeButton, saveButton])
+        stack.distribution = .equalSpacing
         return stack
     }()
     
@@ -56,6 +68,10 @@ final class MainView: UIView {
     func removeSelectedPhoto() {
         photoImageView.image = AppImages.photoPlaceholder
     }
+    
+    func returnCurrentImage() -> UIImage? {
+        return photoImageView.image
+    }
 }
 
 // MARK: - Configure
@@ -71,7 +87,8 @@ private extension MainView {
          selectLibraryPhotoButton,
          takeCameraPhotoButton,
          photoImageView,
-         bottomButtonStack].forEach {
+         edditingActionsStack,
+         totalActionsStack].forEach {
             self.addSubview($0)
         }
     }
@@ -97,9 +114,14 @@ private extension MainView {
             make.top.equalTo(selectLibraryPhotoButton.snp.bottom).offset(Constants.photoImageViewTopOffset)
         }
         
-        bottomButtonStack.snp.makeConstraints { make in
-            make.top.equalTo(photoImageView.snp.bottom).offset(Constants.bottomButtonStackTopOffset)
-            make.centerX.equalToSuperview()
+        edditingActionsStack.snp.makeConstraints { make in
+            make.top.equalTo(photoImageView.snp.bottom).offset(Constants.stacksTopOffset)
+            make.directionalHorizontalEdges.equalToSuperview().inset(Constants.stacksHorizontalInsets)
+        }
+        
+        totalActionsStack.snp.makeConstraints { make in
+            make.top.equalTo(edditingActionsStack.snp.bottom).offset(Constants.stacksTopOffset)
+            make.directionalHorizontalEdges.equalToSuperview().inset(Constants.stacksHorizontalInsets)
         }
     }
 }
@@ -115,6 +137,8 @@ extension MainView: ViewModelConfigurable {
         let editButton: MainButton.ViewModel
         let removeButton: MainButton.ViewModel
         let saveButton: MainButton.ViewModel
+        let addFilterButton: MainButton.ViewModel
+        let addTextButton: MainButton.ViewModel
     }
     
     struct PhotoImageViewModel {
@@ -148,8 +172,8 @@ extension MainView: ViewModelConfigurable {
             make.width.equalTo(viewModel.photoImage.width)
         }
         
-        editButton.configure(with: viewModel.editButton)
-        editButton.snp.makeConstraints { make in
+        drawButton.configure(with: viewModel.editButton)
+        drawButton.snp.makeConstraints { make in
             make.height.equalTo(viewModel.editButton.height)
             make.width.equalTo(viewModel.editButton.title.width(withFont: viewModel.editButton.font!))
         }
@@ -164,6 +188,18 @@ extension MainView: ViewModelConfigurable {
         removeButton.snp.makeConstraints { make in
             make.height.equalTo(viewModel.removeButton.height)
             make.width.equalTo(viewModel.removeButton.title.width(withFont: viewModel.removeButton.font!))
+        }
+        
+        addFilterButton.configure(with: viewModel.addFilterButton)
+        addFilterButton.snp.makeConstraints { make in
+            make.height.equalTo(viewModel.addFilterButton.height)
+            make.width.equalTo(viewModel.addFilterButton.title.width(withFont: viewModel.addFilterButton.font!))
+        }
+        
+        addTextButton.configure(with: viewModel.addTextButton)
+        addTextButton.snp.makeConstraints { make in
+            make.height.equalTo(viewModel.addTextButton.height)
+            make.width.equalTo(viewModel.addTextButton.title.width(withFont: viewModel.addTextButton.font!))
         }
     }
 }

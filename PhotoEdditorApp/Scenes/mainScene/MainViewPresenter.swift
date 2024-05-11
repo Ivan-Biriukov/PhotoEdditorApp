@@ -8,6 +8,8 @@ import Foundation
 
 protocol PresentsMainViewProtocol {
     func presentScreenInitialData()
+    func presentCanvas(with context: CanvasView.ViewModel)
+    func presentFilters(for context: FiltersView.ViewModel)
 }
 
 // MARK: - MainViewPresenter
@@ -28,6 +30,14 @@ final class MainViewPresenter {
 // MARK: - PresentsAuthentificationInfo
 
 extension MainViewPresenter: PresentsMainViewProtocol {
+    func presentFilters(for context: FiltersView.ViewModel) {
+        Router.filtersScreen(with: context)
+    }
+    
+    func presentCanvas(with context: CanvasView.ViewModel) {
+        Router.canvasScreen(with: context)
+    }
+    
     func presentScreenInitialData() {
         viewController?.displayInitialData(with:
                 .init(
@@ -63,13 +73,13 @@ extension MainViewPresenter: PresentsMainViewProtocol {
                         width: SizeCalculator.deviceWidth - 60
                     ),
                     editButton: .init(
-                        title: "Редактировать",
+                        title: "Рисовать",
                         backgroundColor: AppPallete.buttonBg,
                         textColorEnable: .white,
                         font: AppFonts.medium15,
                         cornerRadius: 12,
                         height: 30,
-                        action: {}
+                        action: viewController?.presentCanvasView
                     ),
                     removeButton: .init(
                         title: "Удалить",
@@ -82,6 +92,23 @@ extension MainViewPresenter: PresentsMainViewProtocol {
                     ),
                     saveButton: .init(
                         title: "Сохранить",
+                        backgroundColor: AppPallete.buttonBg,
+                        textColorEnable: .white,
+                        font: AppFonts.medium15,
+                        cornerRadius: 12,
+                        height: 30,
+                        action: {}
+                    ),
+                    addFilterButton: .init(
+                        title: "Добавить фильтр",
+                        backgroundColor: AppPallete.buttonBg,
+                        textColorEnable: .white,
+                        font: AppFonts.medium15,
+                        cornerRadius: 12,
+                        height: 30,
+                        action: viewController?.presentFiltersView
+                    ), addTextButton: .init(
+                        title: "Надпись",
                         backgroundColor: AppPallete.buttonBg,
                         textColorEnable: .white,
                         font: AppFonts.medium15,
