@@ -20,7 +20,6 @@
 		570F9DD02BEE9FD500346C63 /* MainViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570F9DCF2BEE9FD500346C63 /* MainViewPresenter.swift */; };
 		570F9DD22BEEA56000346C63 /* MainViewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570F9DD12BEEA56000346C63 /* MainViewFactory.swift */; };
 		570F9DD52BEEA68900346C63 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 570F9DD42BEEA68900346C63 /* SnapKit */; };
-		570F9DD72BEEA68900346C63 /* SnapKit-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 570F9DD62BEEA68900346C63 /* SnapKit-Dynamic */; };
 		570F9DD92BEEA92100346C63 /* AppPallete.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570F9DD82BEEA92100346C63 /* AppPallete.swift */; };
 		570F9DDB2BEEA98E00346C63 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 570F9DDA2BEEA98E00346C63 /* Colors.xcassets */; };
 		570F9DDE2BEEAABE00346C63 /* ViewWithText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570F9DDD2BEEAABE00346C63 /* ViewWithText.swift */; };
@@ -31,6 +30,22 @@
 		570F9DE92BEEC62D00346C63 /* AppFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570F9DE82BEEC62D00346C63 /* AppFonts.swift */; };
 		570F9DEB2BEECA1800346C63 /* SizeCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570F9DEA2BEECA1800346C63 /* SizeCalculator.swift */; };
 		570F9DED2BEECB2200346C63 /* AppImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570F9DEC2BEECB2200346C63 /* AppImages.swift */; };
+		570F9DF12BEFB62100346C63 /* ImageButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570F9DF02BEFB62100346C63 /* ImageButton.swift */; };
+		570F9DF42BEFB70400346C63 /* CanvasViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570F9DF32BEFB70400346C63 /* CanvasViewController.swift */; };
+		570F9DF62BEFB75100346C63 /* CanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570F9DF52BEFB75100346C63 /* CanvasView.swift */; };
+		570F9DF92BEFB82F00346C63 /* CanvasInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570F9DF82BEFB82F00346C63 /* CanvasInteractor.swift */; };
+		570F9DFB2BEFB89500346C63 /* CanvasPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570F9DFA2BEFB89500346C63 /* CanvasPresenter.swift */; };
+		570F9DFD2BEFB8FE00346C63 /* CanvasFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570F9DFC2BEFB8FE00346C63 /* CanvasFactory.swift */; };
+		570F9DFF2BEFBB5500346C63 /* MainRoutes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570F9DFE2BEFBB5500346C63 /* MainRoutes.swift */; };
+		570F9E012BEFBBDA00346C63 /* CanvasRoutes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570F9E002BEFBBDA00346C63 /* CanvasRoutes.swift */; };
+		570F9E032BEFDDB100346C63 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570F9E022BEFDDB100346C63 /* UIImage+Extension.swift */; };
+		570F9E062BEFEDFE00346C63 /* FiltersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570F9E052BEFEDFE00346C63 /* FiltersViewController.swift */; };
+		570F9E092BEFEE3E00346C63 /* FiltersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570F9E082BEFEE3E00346C63 /* FiltersView.swift */; };
+		570F9E0B2BEFEE9A00346C63 /* FiltersInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570F9E0A2BEFEE9A00346C63 /* FiltersInteractor.swift */; };
+		570F9E0D2BEFEF1A00346C63 /* FiltersPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570F9E0C2BEFEF1A00346C63 /* FiltersPresenter.swift */; };
+		570F9E0F2BEFF03D00346C63 /* FiltersFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570F9E0E2BEFF03D00346C63 /* FiltersFactory.swift */; };
+		570F9E112BEFF07600346C63 /* FilterRoutes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570F9E102BEFF07600346C63 /* FilterRoutes.swift */; };
+		570F9E132BF0056600346C63 /* FiltersCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570F9E122BF0056600346C63 /* FiltersCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +73,22 @@
 		570F9DE82BEEC62D00346C63 /* AppFonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFonts.swift; sourceTree = "<group>"; };
 		570F9DEA2BEECA1800346C63 /* SizeCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SizeCalculator.swift; sourceTree = "<group>"; };
 		570F9DEC2BEECB2200346C63 /* AppImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppImages.swift; sourceTree = "<group>"; };
+		570F9DF02BEFB62100346C63 /* ImageButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageButton.swift; sourceTree = "<group>"; };
+		570F9DF32BEFB70400346C63 /* CanvasViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasViewController.swift; sourceTree = "<group>"; };
+		570F9DF52BEFB75100346C63 /* CanvasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasView.swift; sourceTree = "<group>"; };
+		570F9DF82BEFB82F00346C63 /* CanvasInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasInteractor.swift; sourceTree = "<group>"; };
+		570F9DFA2BEFB89500346C63 /* CanvasPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasPresenter.swift; sourceTree = "<group>"; };
+		570F9DFC2BEFB8FE00346C63 /* CanvasFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasFactory.swift; sourceTree = "<group>"; };
+		570F9DFE2BEFBB5500346C63 /* MainRoutes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainRoutes.swift; sourceTree = "<group>"; };
+		570F9E002BEFBBDA00346C63 /* CanvasRoutes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasRoutes.swift; sourceTree = "<group>"; };
+		570F9E022BEFDDB100346C63 /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
+		570F9E052BEFEDFE00346C63 /* FiltersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiltersViewController.swift; sourceTree = "<group>"; };
+		570F9E082BEFEE3E00346C63 /* FiltersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiltersView.swift; sourceTree = "<group>"; };
+		570F9E0A2BEFEE9A00346C63 /* FiltersInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiltersInteractor.swift; sourceTree = "<group>"; };
+		570F9E0C2BEFEF1A00346C63 /* FiltersPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiltersPresenter.swift; sourceTree = "<group>"; };
+		570F9E0E2BEFF03D00346C63 /* FiltersFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiltersFactory.swift; sourceTree = "<group>"; };
+		570F9E102BEFF07600346C63 /* FilterRoutes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterRoutes.swift; sourceTree = "<group>"; };
+		570F9E122BF0056600346C63 /* FiltersCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiltersCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,7 +97,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				570F9DD52BEEA68900346C63 /* SnapKit in Frameworks */,
-				570F9DD72BEEA68900346C63 /* SnapKit-Dynamic in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -114,6 +144,8 @@
 			isa = PBXGroup;
 			children = (
 				570F9DC12BEE9DDE00346C63 /* mainScene */,
+				570F9DF22BEFB6D100346C63 /* canvasScene */,
+				570F9E042BEFEDDF00346C63 /* filtersScene */,
 				570F9DB52BEE9AC300346C63 /* LaunchScreen.storyboard */,
 			);
 			path = Scenes;
@@ -141,6 +173,7 @@
 				570F9DCD2BEE9F8900346C63 /* MainViewInteractor.swift */,
 				570F9DCF2BEE9FD500346C63 /* MainViewPresenter.swift */,
 				570F9DD12BEEA56000346C63 /* MainViewFactory.swift */,
+				570F9DFE2BEFBB5500346C63 /* MainRoutes.swift */,
 			);
 			path = mainScene;
 			sourceTree = "<group>";
@@ -153,6 +186,8 @@
 				570F9DC42BEE9E9C00346C63 /* Router.swift */,
 				570F9DC62BEE9EC300346C63 /* Factory.swift */,
 				570F9DC82BEE9EE200346C63 /* ViewModelConfigurable.swift */,
+				570F9DF02BEFB62100346C63 /* ImageButton.swift */,
+				570F9E122BF0056600346C63 /* FiltersCollectionViewCell.swift */,
 			);
 			path = "Protocols and Elements";
 			sourceTree = "<group>";
@@ -161,6 +196,7 @@
 			isa = PBXGroup;
 			children = (
 				570F9DE62BEEABAD00346C63 /* String+Extensions.swift */,
+				570F9E022BEFDDB100346C63 /* UIImage+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -191,6 +227,48 @@
 			path = MainButton;
 			sourceTree = "<group>";
 		};
+		570F9DF22BEFB6D100346C63 /* canvasScene */ = {
+			isa = PBXGroup;
+			children = (
+				570F9DF32BEFB70400346C63 /* CanvasViewController.swift */,
+				570F9DF72BEFB75400346C63 /* views */,
+				570F9DF82BEFB82F00346C63 /* CanvasInteractor.swift */,
+				570F9DFA2BEFB89500346C63 /* CanvasPresenter.swift */,
+				570F9DFC2BEFB8FE00346C63 /* CanvasFactory.swift */,
+				570F9E002BEFBBDA00346C63 /* CanvasRoutes.swift */,
+			);
+			path = canvasScene;
+			sourceTree = "<group>";
+		};
+		570F9DF72BEFB75400346C63 /* views */ = {
+			isa = PBXGroup;
+			children = (
+				570F9DF52BEFB75100346C63 /* CanvasView.swift */,
+			);
+			path = views;
+			sourceTree = "<group>";
+		};
+		570F9E042BEFEDDF00346C63 /* filtersScene */ = {
+			isa = PBXGroup;
+			children = (
+				570F9E052BEFEDFE00346C63 /* FiltersViewController.swift */,
+				570F9E072BEFEE2900346C63 /* views */,
+				570F9E0A2BEFEE9A00346C63 /* FiltersInteractor.swift */,
+				570F9E0C2BEFEF1A00346C63 /* FiltersPresenter.swift */,
+				570F9E0E2BEFF03D00346C63 /* FiltersFactory.swift */,
+				570F9E102BEFF07600346C63 /* FilterRoutes.swift */,
+			);
+			path = filtersScene;
+			sourceTree = "<group>";
+		};
+		570F9E072BEFEE2900346C63 /* views */ = {
+			isa = PBXGroup;
+			children = (
+				570F9E082BEFEE3E00346C63 /* FiltersView.swift */,
+			);
+			path = views;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -209,7 +287,6 @@
 			name = PhotoEdditorApp;
 			packageProductDependencies = (
 				570F9DD42BEEA68900346C63 /* SnapKit */,
-				570F9DD62BEEA68900346C63 /* SnapKit-Dynamic */,
 			);
 			productName = PhotoEdditorApp;
 			productReference = 570F9DA72BEE9AC200346C63 /* PhotoEdditorApp.app */;
@@ -269,19 +346,35 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				570F9DF42BEFB70400346C63 /* CanvasViewController.swift in Sources */,
 				570F9DE02BEEAAED00346C63 /* ViewWithTextViewModel.swift in Sources */,
+				570F9E0D2BEFEF1A00346C63 /* FiltersPresenter.swift in Sources */,
 				570F9DC52BEE9E9C00346C63 /* Router.swift in Sources */,
 				570F9DE32BEEAB6400346C63 /* MainButton.swift in Sources */,
+				570F9E092BEFEE3E00346C63 /* FiltersView.swift in Sources */,
+				570F9DFD2BEFB8FE00346C63 /* CanvasFactory.swift in Sources */,
+				570F9E062BEFEDFE00346C63 /* FiltersViewController.swift in Sources */,
+				570F9E132BF0056600346C63 /* FiltersCollectionViewCell.swift in Sources */,
+				570F9DFB2BEFB89500346C63 /* CanvasPresenter.swift in Sources */,
+				570F9DF12BEFB62100346C63 /* ImageButton.swift in Sources */,
+				570F9DF92BEFB82F00346C63 /* CanvasInteractor.swift in Sources */,
 				570F9DCC2BEE9F2C00346C63 /* MainView.swift in Sources */,
 				570F9DE72BEEABAD00346C63 /* String+Extensions.swift in Sources */,
+				570F9DFF2BEFBB5500346C63 /* MainRoutes.swift in Sources */,
 				570F9DAF2BEE9AC200346C63 /* MainViewController.swift in Sources */,
+				570F9E0F2BEFF03D00346C63 /* FiltersFactory.swift in Sources */,
 				570F9DAB2BEE9AC200346C63 /* AppDelegate.swift in Sources */,
 				570F9DD92BEEA92100346C63 /* AppPallete.swift in Sources */,
 				570F9DAD2BEE9AC200346C63 /* SceneDelegate.swift in Sources */,
+				570F9E112BEFF07600346C63 /* FilterRoutes.swift in Sources */,
+				570F9E032BEFDDB100346C63 /* UIImage+Extension.swift in Sources */,
 				570F9DED2BEECB2200346C63 /* AppImages.swift in Sources */,
 				570F9DE92BEEC62D00346C63 /* AppFonts.swift in Sources */,
 				570F9DC72BEE9EC300346C63 /* Factory.swift in Sources */,
+				570F9E0B2BEFEE9A00346C63 /* FiltersInteractor.swift in Sources */,
 				570F9DCE2BEE9F8900346C63 /* MainViewInteractor.swift in Sources */,
+				570F9DF62BEFB75100346C63 /* CanvasView.swift in Sources */,
+				570F9E012BEFBBDA00346C63 /* CanvasRoutes.swift in Sources */,
 				570F9DC92BEE9EE200346C63 /* ViewModelConfigurable.swift in Sources */,
 				570F9DE52BEEAB8900346C63 /* MainButtonViewModel.swift in Sources */,
 				570F9DDE2BEEAABE00346C63 /* ViewWithText.swift in Sources */,
@@ -527,11 +620,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 570F9DD32BEEA68900346C63 /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
-		};
-		570F9DD62BEEA68900346C63 /* SnapKit-Dynamic */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 570F9DD32BEEA68900346C63 /* XCRemoteSwiftPackageReference "SnapKit" */;
-			productName = "SnapKit-Dynamic";
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

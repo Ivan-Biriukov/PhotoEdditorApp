@@ -14,4 +14,5 @@ final class AppPallete {
     static let mainBG = getColor(named: "mainBackground")
     static let titleTextColor = getColor(named: "titleTextColor")
     static let buttonBg = getColor(named: "buttonBackground1")
+    static let filtersBG = getColor(named: "filtersBackground")
 }

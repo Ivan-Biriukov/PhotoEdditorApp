@@ -1,13 +1,19 @@
-// MARK: - Imports
-
 import UIKit
+import SnapKit
+import PencilKit
+
+// MARK: - DisplayMainViewController
 
 protocol DisplayMainViewController: AnyObject {
     func displayInitialData(with viewModel: MainView.ViewModel)
     func presentMediaLibraryPicker()
     func presentCameraPhoto()
+    func presentCanvasView()
+    func presentFiltersView()
     func cleanPhotoImage()
 }
+
+// MARK: - MainViewController
 
 final class MainViewController: UIViewController {
     
@@ -15,6 +21,9 @@ final class MainViewController: UIViewController {
     
     private let contentView = MainView()
     private let interactor: MainBusinessLogic
+    
+    private var imagePicker = UIImagePickerController()
+
     
     // MARK: - .init()
     
@@ -27,6 +36,10 @@ final class MainViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    deinit {
+        contentView.removeImageObserver()
+    }
+    
     // MARK: - Life Cycle
     
     override func loadView() {
@@ -35,7 +48,17 @@ final class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupImagePicker()
         interactor.showInitialData()
+    }
+}
+
+// MARK: - Configure
+
+private extension MainViewController {
+    func setupImagePicker() {
+        imagePicker.delegate = self
+        imagePicker.allowsEditing = true
     }
 }
 
@@ -47,21 +70,29 @@ extension MainViewController: DisplayMainViewController {
     }
     
     func presentMediaLibraryPicker() {
-        let imagePicker = UIImagePickerController()
-         imagePicker.delegate = self
-         imagePicker.sourceType = .photoLibrary
-         present(imagePicker, animated: true, completion: nil)
+        imagePicker.sourceType = .photoLibrary
+        present(imagePicker, animated: true, completion: nil)
     }
     
     func presentCameraPhoto() {
-        let imagePicker = UIImagePickerController()
-         imagePicker.delegate = self
-         imagePicker.sourceType = .camera
-         present(imagePicker, animated: true, completion: nil)
+        imagePicker.sourceType = .camera
+        present(imagePicker, animated: true, completion: nil)
     }
     
     func cleanPhotoImage() {
         contentView.removeSelectedPhoto()
+    }
+    
+    func presentCanvasView() {
+        if contentView.isEnableToEddit {
+            interactor.showCanvas(with: .init(edditingImage: contentView.returnCurrentImage()))
+        }
+    }
+    
+    func presentFiltersView() {
+        if contentView.isEnableToEddit {
+            interactor.showFilters(with: .init(edditingImage: contentView.returnCurrentImage()!))
+        }
     }
 }
 
@@ -69,14 +100,14 @@ extension MainViewController: DisplayMainViewController {
 
 extension MainViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        if let selectedImage = info[.originalImage] as? UIImage {
-            contentView.updateImagePhoto(with: selectedImage)
+        guard let choosenImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage else {
+            return
         }
+        contentView.updateImagePhoto(with: choosenImage)
         dismiss(animated: true, completion: nil)
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true, completion: nil)
     }
-    
 }
