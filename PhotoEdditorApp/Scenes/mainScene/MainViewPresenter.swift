@@ -6,6 +6,7 @@ protocol PresentsMainViewProtocol {
     func presentScreenInitialData()
     func presentCanvas(with context: CanvasView.ViewModel)
     func presentFilters(for context: FiltersView.ViewModel)
+    func presentText(with context: TextView.ViewModel)
 }
 
 // MARK: - MainViewPresenter
@@ -26,6 +27,10 @@ final class MainViewPresenter {
 // MARK: - PresentsAuthentificationInfo
 
 extension MainViewPresenter: PresentsMainViewProtocol {
+    func presentText(with context: TextView.ViewModel) {
+        Router.textScreen(with: context)
+    }
+    
     func presentFilters(for context: FiltersView.ViewModel) {
         Router.filtersScreen(with: context)
     }
@@ -110,7 +115,16 @@ extension MainViewPresenter: PresentsMainViewProtocol {
                         font: AppFonts.medium15,
                         cornerRadius: 12,
                         height: 30,
-                        action: {}
+                        action: viewController?.presentTextEdditingView
+                    ),
+                    shareButton: .init(
+                        title: "Поделиться",
+                        backgroundColor: AppPallete.buttonBg,
+                        textColorEnable: .white,
+                        font: AppFonts.medium15,
+                        cornerRadius: 12,
+                        height: 30,
+                        action: viewController?.shareImage
                     )
                 )
         )

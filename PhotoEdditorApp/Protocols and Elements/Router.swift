@@ -42,3 +42,9 @@ extension Router: FiltersRoutes {
         performPopUpRoute(factory: FiltersFabric(), context: contex)
     }
 }
+
+extension Router: TextRoutes {
+    static func textScreen(with context: TextView.ViewModel) {
+        performPopUpRoute(factory: TextFabric(), context: context)
+    }
+}
