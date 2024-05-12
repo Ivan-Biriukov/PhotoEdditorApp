@@ -111,6 +111,15 @@ extension MainViewPresenter: PresentsMainViewProtocol {
                         cornerRadius: 12,
                         height: 30,
                         action: {}
+                    ),
+                    shareButton: .init(
+                        title: "Поделиться",
+                        backgroundColor: AppPallete.buttonBg,
+                        textColorEnable: .white,
+                        font: AppFonts.medium15,
+                        cornerRadius: 12,
+                        height: 30,
+                        action: viewController?.shareImage
                     )
                 )
         )

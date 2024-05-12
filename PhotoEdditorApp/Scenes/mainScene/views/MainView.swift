@@ -36,6 +36,7 @@ final class MainView: UIView {
     private lazy var saveButton = MainButton()
     private lazy var addFilterButton = MainButton()
     private lazy var addTextButton = MainButton()
+    private lazy var shareButton = MainButton()
     
     private lazy var edditingActionsStack: UIStackView = {
         let stack = UIStackView(arrangedSubviews: [drawButton, addFilterButton, addTextButton])
@@ -44,7 +45,7 @@ final class MainView: UIView {
     }()
     
     private lazy var totalActionsStack: UIStackView = {
-        let stack = UIStackView(arrangedSubviews: [removeButton, saveButton])
+        let stack = UIStackView(arrangedSubviews: [removeButton, saveButton, shareButton])
         stack.distribution = .equalSpacing
         return stack
     }()
@@ -184,6 +185,7 @@ extension MainView: ViewModelConfigurable {
         let saveButton: MainButton.ViewModel
         let addFilterButton: MainButton.ViewModel
         let addTextButton: MainButton.ViewModel
+        let shareButton: MainButton.ViewModel
     }
     
     struct PhotoImageViewModel {
@@ -245,6 +247,12 @@ extension MainView: ViewModelConfigurable {
         addTextButton.snp.makeConstraints { make in
             make.height.equalTo(viewModel.addTextButton.height)
             make.width.equalTo(viewModel.addTextButton.title.width(withFont: viewModel.addTextButton.font!))
+        }
+        
+        shareButton.configure(with: viewModel.shareButton)
+        shareButton.snp.makeConstraints { make in
+            make.height.equalTo(viewModel.shareButton.height)
+            make.width.equalTo(viewModel.shareButton.title.width(withFont: viewModel.shareButton.font!))
         }
     }
 }
