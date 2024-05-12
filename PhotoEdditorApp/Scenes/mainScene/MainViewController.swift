@@ -1,5 +1,3 @@
-// MARK: - Imports
-
 import UIKit
 import SnapKit
 import PencilKit
@@ -36,6 +34,10 @@ final class MainViewController: UIViewController {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    deinit {
+        contentView.removeImageObserver()
     }
     
     // MARK: - Life Cycle
@@ -109,4 +111,3 @@ extension MainViewController: UIImagePickerControllerDelegate, UINavigationContr
         dismiss(animated: true, completion: nil)
     }
 }
-

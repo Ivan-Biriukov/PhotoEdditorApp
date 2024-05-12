@@ -1,7 +1,6 @@
 import UIKit
 
 final class AppImages {
-    
     static let photoPlaceholder = UIImage(named: "anonim")
     static let test = UIImage(named: "test")
     static let blureIcon = UIImage(named: "blure")

@@ -25,7 +25,6 @@ extension Router {
     }
 }
 
-
 extension Router: MainRoutes {
     static func mainScreen() {
         performRoute(factory: MainViewFabric(), context: ())

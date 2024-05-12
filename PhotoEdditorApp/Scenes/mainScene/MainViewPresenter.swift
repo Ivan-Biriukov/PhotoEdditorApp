@@ -1,9 +1,5 @@
 import Foundation
 
-// MARK: - Imports
-
-import Foundation
-
 // MARK: - PresentsMainScene
 
 protocol PresentsMainViewProtocol {

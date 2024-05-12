@@ -1,12 +1,13 @@
-// MARK: - Imports
-
 import UIKit
 import SnapKit
 import PencilKit
-import PhotosUI
+
+// MARK: - Constants
 
 fileprivate enum Constants {
     static let actionBarHeight: CGFloat = 40
+    static let observingNotificationName: String = "edditingImageObserver"
+    static let observerImageObjectName: String = "edditingImage"
 }
 
 // MARK: - CanvasView
@@ -14,6 +15,8 @@ fileprivate enum Constants {
 final class CanvasView: UIView {
     
     // MARK: - Properties
+    
+    private var closeAction: (() -> Void)?
         
     private let actionBar = UIToolbar()
     private let canvasView = PKCanvasView()
@@ -22,9 +25,8 @@ final class CanvasView: UIView {
     private lazy var undoBarItem: UIBarButtonItem = .init(title: "undo", style: .plain, target: self, action: #selector(undo))
     private lazy var clearBarItem: UIBarButtonItem = .init(title: "clear", style: .plain, target: self, action: #selector(clear))
     private lazy var saveBarItem: UIBarButtonItem = .init(title: "save", style: .done, target: self, action: #selector(save))
-    private lazy var closeBarItem: UIBarButtonItem = .init(title: "close", style: .done, target: nil, action: nil)
+    private lazy var closeBarItem: UIBarButtonItem = .init(title: "close", style: .done, target: nil, action: #selector(close))
     private lazy var flexibleSpace: UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-
 
     // MARK: - .init()
     
@@ -93,10 +95,15 @@ private extension CanvasView {
         UIGraphicsEndImageContext()
         
         if newImage != nil {
-            PHPhotoLibrary.shared().performChanges {
-                PHAssetChangeRequest.creationRequestForAsset(from: newImage!)
-            }
+            NotificationCenter.default.post(
+                name: NSNotification.Name(Constants.observingNotificationName),
+                object: [Constants.observerImageObjectName : newImage]
+            )
         }
+    }
+    
+    @objc func close() {
+       closeAction?()
     }
 }
 
@@ -105,6 +112,15 @@ private extension CanvasView {
 extension CanvasView: ViewModelConfigurable {
     struct ViewModel {
         let edditingImage: UIImage?
+        let closeAction: (() -> Void)?
+        
+        init(
+            edditingImage: UIImage? = nil,
+            closeAction: ( () -> Void)? = nil
+        ) {
+            self.edditingImage = edditingImage
+            self.closeAction = closeAction
+        }
     }
     
     func configure(with viewModel: ViewModel) {
@@ -112,11 +128,10 @@ extension CanvasView: ViewModelConfigurable {
             let resizedImage = edditingImage.imageResized(to: CGSize(width: SizeCalculator.deviceWidth, height: SizeCalculator.deviceHeight - 200))
             canvasView.backgroundColor = UIColor(patternImage: resizedImage)
         }
+        closeAction = viewModel.closeAction
     }
 }
 
 // MARK: - PKCanvasViewDelegate
 
-extension CanvasView: PKCanvasViewDelegate {
-    
-}
+extension CanvasView: PKCanvasViewDelegate {}

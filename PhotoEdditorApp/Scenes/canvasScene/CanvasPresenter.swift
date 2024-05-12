@@ -1,14 +1,3 @@
-//
-//  CanvasPresenter.swift
-//  PhotoEdditorApp
-//
-//  Created by иван Бирюков on 11.05.2024.
-//
-
-import Foundation
-
-// MARK: - Imports
-
 import Foundation
 
 // MARK: - PresentsCanvasProtocol
@@ -39,7 +28,10 @@ final class CanvasPresenter {
 extension CanvasPresenter: PresentsCanvasProtocol {
     func presentScreenData() {
         viewController?.displayInitialData(with:
-                .init(edditingImage: contex.edditingImage)
+                .init(
+                    edditingImage: contex.edditingImage,
+                    closeAction: viewController?.dissmissSelf
+                )
         )
     }
 }

@@ -1,5 +1,3 @@
-// MARK: - Imports
-
 import UIKit
 
 // MARK: - CanvasFabric

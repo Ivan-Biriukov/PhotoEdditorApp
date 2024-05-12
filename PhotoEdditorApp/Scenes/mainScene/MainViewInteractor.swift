@@ -1,5 +1,3 @@
-// MARK: - Imports
-
 import Foundation
 
 // MARK: - MainBusinessLogic
@@ -39,6 +37,4 @@ extension MainSceneInteractor: MainBusinessLogic {
     func showInitialData() {
         presenter.presentScreenInitialData()
     }
-    
 }
-

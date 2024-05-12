@@ -1,9 +1,6 @@
-// MARK: - Imports
-
 import UIKit
 import SnapKit
 import AudioToolbox
-
 
 // MARK: - MainButton
 

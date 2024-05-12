@@ -1,18 +1,17 @@
-// MARK: - Imports
-
 import UIKit
 
 // MARK: - DisplayCanvasViewController
 
 protocol DisplayCanvasViewController: AnyObject {
     func displayInitialData(with viewModel: CanvasView.ViewModel)
+    func dissmissSelf()
 }
 
-// MARK: - ViewControllerClassNameCanvasViewController
+// MARK: - CanvasViewController
 
 final class CanvasViewController: UIViewController {
     
-    // MARK: - Private Properties
+    // MARK: - Properties
     
     private let contentView = CanvasView()
     private let interactor: CanvasBusinessLogic
@@ -45,5 +44,9 @@ final class CanvasViewController: UIViewController {
 extension CanvasViewController: DisplayCanvasViewController {
     func displayInitialData(with viewModel: CanvasView.ViewModel) {
         contentView.configure(with: viewModel)
+    }
+    
+    func dissmissSelf() {
+        self.dismiss(animated: true)
     }
 }

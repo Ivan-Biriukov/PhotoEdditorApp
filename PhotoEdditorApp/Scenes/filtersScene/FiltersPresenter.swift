@@ -1,5 +1,3 @@
-// MARK: - Imports
-
 import Foundation
 
 // MARK: - PresentsFiltersProtocol
@@ -29,6 +27,11 @@ final class FiltersPresenter {
 
 extension FiltersPresenter: PresentsFiltersProtocol {
     func presentScreenData() {
-        viewController?.displayInitionalData(viewModel: .init(edditingImage: contex.edditingImage))
+        viewController?.displayInitionalData(viewModel:
+                .init(
+                    edditingImage: contex.edditingImage,
+                    closeAction: viewController?.dissmissSelf
+                )
+        )
     }
 }

@@ -1,18 +1,17 @@
-// MARK: - Imports
-
 import UIKit
 
 // MARK: - DisplayFilters
 
 protocol DisplayFilters: AnyObject {
     func displayInitionalData(viewModel: FiltersView.ViewModel)
+    func dissmissSelf()
 }
 
 // MARK: - FiltersViewController
 
 final class FiltersViewController: UIViewController {
     
-    // MARK: - Private Properties
+    // MARK: - Properties
     
     private let contentView = FiltersView()
     private let interactor: FiltersBusinessLogic
@@ -45,6 +44,10 @@ final class FiltersViewController: UIViewController {
 extension FiltersViewController: DisplayFilters {
     func displayInitionalData(viewModel: FiltersView.ViewModel) {
         contentView.configure(with: viewModel)
+    }
+    
+    func dissmissSelf() {
+        self.dismiss(animated: true)
     }
 }
 

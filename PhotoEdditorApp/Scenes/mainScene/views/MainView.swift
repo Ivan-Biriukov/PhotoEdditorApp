@@ -1,7 +1,6 @@
-// MARK: - Imports
-
 import UIKit
 import SnapKit
+import PhotosUI
 
 // MARK: - MainView
 
@@ -16,9 +15,13 @@ final class MainView: UIView {
         static let photoImageViewTopOffset: CGFloat = 25
         static let stacksTopOffset: CGFloat = 15
         static let stacksHorizontalInsets: CGFloat = 25
+        static let observingNotificationName: String = "edditingImageObserver"
+        static let observerImageObjectName: String = "edditingImage"
     }
     
     // MARK: - Properties
+    
+    var observer: NSObjectProtocol?
     
     var isEnableToEddit: Bool {
         return (photoImageView.image == AppImages.photoPlaceholder) ? false : true
@@ -53,13 +56,14 @@ final class MainView: UIView {
         initialConfigure()
         addSubviews()
         setupConstraints()
+        autoUpdateImage()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: - Internal Methods
+    // MARK: -  Methods
     
     func updateImagePhoto(with photo: UIImage) {
         photoImageView.image = photo
@@ -72,6 +76,31 @@ final class MainView: UIView {
     func returnCurrentImage() -> UIImage? {
         return photoImageView.image
     }
+    
+    func removeImageObserver() {
+        if let observer = observer {
+            NotificationCenter.default.removeObserver(observer)
+            self.observer = nil
+        }
+    }
+    
+    private func autoUpdateImage() {
+        observer = NotificationCenter.default.addObserver(
+            forName: NSNotification.Name(Constants.observingNotificationName),
+            object: nil,
+            queue: .main,
+            using: { notification in
+                guard let object = notification.object as? [String : UIImage] else {
+                    return
+                }
+                
+                guard let image = object[Constants.observerImageObjectName] else {
+                    return
+                }
+                
+                self.photoImageView.image = image
+        })
+    }
 }
 
 // MARK: - Configure
@@ -80,6 +109,7 @@ private extension MainView {
     
     func initialConfigure() {
         backgroundColor = AppPallete.mainBG
+        saveButton.addTarget(self, action: #selector(saveImage), for: .touchUpInside)
     }
         
     func addSubviews() {
@@ -122,6 +152,21 @@ private extension MainView {
         totalActionsStack.snp.makeConstraints { make in
             make.top.equalTo(edditingActionsStack.snp.bottom).offset(Constants.stacksTopOffset)
             make.directionalHorizontalEdges.equalToSuperview().inset(Constants.stacksHorizontalInsets)
+        }
+    }
+}
+
+// MARK: - Actions
+
+private extension MainView {
+    @objc func saveImage() {
+        if photoImageView.image != AppImages.photoPlaceholder && photoImageView.image != nil {
+            PHPhotoLibrary.shared().performChanges { [weak self] in
+                guard let self else {
+                    return
+                }
+                PHAssetChangeRequest.creationRequestForAsset(from: self.photoImageView.image!)
+            }
         }
     }
 }

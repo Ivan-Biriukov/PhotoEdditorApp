@@ -1,5 +1,3 @@
-// MARK: - Imports
-
 import UIKit
 import SnapKit
 
@@ -15,10 +13,15 @@ final class FiltersView: UIView {
         static let currentImageWidth: CGFloat = SizeCalculator.deviceWidth - 50
         static let currentImageTopOffset: CGFloat = 25
         static let collectionItemSize: CGSize = .init(width: 80, height: 80)
+        static let filtersCollectionViewHeight: CGFloat = 100
+        static let filtersCollectionViewTopOffset: CGFloat = 20
+        static let observingNotificationName: String = "edditingImageObserver"
+        static let observerImageObjectName: String = "edditingImage"
     }
     
     // MARK: - Properties
     
+    private var closeAction: (() -> Void)?
     private var dataSource: [FiltersCollectionViewCell.ViewModel] = [
         .init(itemImage: AppImages.blureIcon!, filterName: "CIGaussianBlur", isFilterApplied: false),
         .init(itemImage: AppImages.oldIcon!, filterName: "CISepiaTone", isFilterApplied: false),
@@ -30,13 +33,12 @@ final class FiltersView: UIView {
     ]
     
     private var edditingImage = UIImage()
-    
     private let toolBar = UIToolbar()
-    private lazy var cancelChanges: UIBarButtonItem = .init(title: "Cancel changes", style: .plain, target: self, action: nil)
+    private lazy var cancelChanges: UIBarButtonItem = .init(title: "Cancel changes", style: .plain, target: self, action: #selector(removeChanges))
     private let space: UIBarButtonItem = .init(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-    private lazy var saveButton: UIBarButtonItem = .init(title: "Save & Close", style: .done, target: self, action: nil)
+    private lazy var saveButton: UIBarButtonItem = .init(title: "Save & Close", style: .done, target: self, action: #selector(save))
     private let space1: UIBarButtonItem = .init(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-    private lazy var closeButton: UIBarButtonItem = .init(title: "Close", style: .plain, target: self, action: nil)
+    private lazy var closeButton: UIBarButtonItem = .init(title: "Close", style: .plain, target: self, action: #selector(close))
     
     private lazy var currentImageView: UIImageView = {
         let image = UIImageView()
@@ -84,7 +86,6 @@ final class FiltersView: UIView {
             }
         }
     }
-
 }
 
 // MARK: - Configure
@@ -113,9 +114,9 @@ private extension FiltersView {
         }
         
         filtersCollectionView.snp.makeConstraints { make in
-            make.height.equalTo(100)
+            make.height.equalTo(Constants.filtersCollectionViewHeight)
             make.directionalHorizontalEdges.equalToSuperview()
-            make.top.equalTo(currentImageView.snp.bottom).offset(20)
+            make.top.equalTo(currentImageView.snp.bottom).offset(Constants.filtersCollectionViewTopOffset)
         }
     }
     
@@ -125,16 +126,46 @@ private extension FiltersView {
     }
 }
 
+// MARK: - Actions
+
+private extension FiltersView {
+    @objc func removeChanges() {
+        currentImageView.image = edditingImage
+    }
+    
+    @objc func save() {
+        NotificationCenter.default.post(
+            name: NSNotification.Name(Constants.observingNotificationName),
+            object: [Constants.observerImageObjectName : currentImageView.image]
+        )
+        closeAction?()
+    }
+    
+    @objc func close() {
+        closeAction?()
+    }
+}
+
 // MARK: - ViewModelConfigurable
 
 extension FiltersView: ViewModelConfigurable {
     struct ViewModel {
         let edditingImage: UIImage
+        let closeAction: (() -> Void)?
+        
+        init(
+            edditingImage: UIImage,
+            closeAction: (() -> Void)? = nil
+        ) {
+            self.edditingImage = edditingImage
+            self.closeAction = closeAction
+        }
     }
     
     func configure(with viewModel: ViewModel) {
         edditingImage = viewModel.edditingImage
         currentImageView.image = viewModel.edditingImage
+        closeAction = viewModel.closeAction
     }
 }
 

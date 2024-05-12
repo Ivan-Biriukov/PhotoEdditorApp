@@ -1,6 +1,3 @@
-
-// MARK: - Imports
-
 import Foundation
 
 // MARK: - FiltersBusinessLogic
@@ -31,4 +28,3 @@ extension FiltersInteractor: FiltersBusinessLogic {
         presenter.presentScreenData()
     }
 }
-
