@@ -1,14 +1,3 @@
-//
-//  TextPresenter.swift
-//  PhotoEdditorApp
-//
-//  Created by иван Бирюков on 12.05.2024.
-//
-
-import Foundation
-
-// MARK: - Imports
-
 import Foundation
 
 // MARK: - PresentsTextProtocol
@@ -38,6 +27,12 @@ final class TextPresenter {
 
 extension TextPresenter: PresentsTextProtocol {
     func presentScreenData() {
-        viewController?.displayInitionalData(viewModel: contex)
+        viewController?.displayInitionalData(viewModel:
+                .init(
+                    currentImage: contex.currentImage,
+                    closeAction: viewController?.dissmissSelf,
+                    showColorPickerAction: viewController?.displayColorPicker
+                )
+        )
     }
 }

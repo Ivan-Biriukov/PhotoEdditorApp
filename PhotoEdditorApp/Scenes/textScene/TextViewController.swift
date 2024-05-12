@@ -1,20 +1,11 @@
-//
-//  TextViewController.swift
-//  PhotoEdditorApp
-//
-//  Created by иван Бирюков on 12.05.2024.
-//
-
-import Foundation
-
-// MARK: - Imports
-
 import UIKit
 
 // MARK: - DisplayTextScene
 
 protocol DisplayTextScene: AnyObject {
     func displayInitionalData(viewModel: TextView.ViewModel)
+    func dissmissSelf()
+    func displayColorPicker()
 }
 
 // MARK: - TextViewController
@@ -45,6 +36,7 @@ final class TextViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        hideKeyboardWhenTappedAround()
         interactor.showData()
     }
 }
@@ -52,8 +44,25 @@ final class TextViewController: UIViewController {
 // MARK: - Confirming to DisplaTextScene
 
 extension TextViewController: DisplayTextScene {
+    func displayColorPicker() {
+        let colorPicker = UIColorPickerViewController()
+        colorPicker.delegate = self
+        self.present(colorPicker, animated: true)
+    }
+    
+    func dissmissSelf() {
+        self.dismiss(animated: true)
+    }
+    
     func displayInitionalData(viewModel: TextView.ViewModel) {
         contentView.configure(with: viewModel)
     }
 }
 
+// MARK: - UIColorPickerViewControllerDelegate
+
+extension TextViewController: UIColorPickerViewControllerDelegate {
+    func colorPickerViewController(_ viewController: UIColorPickerViewController, didSelect color: UIColor, continuously: Bool) {
+        contentView.changeTextColor(with: color)
+    }
+}

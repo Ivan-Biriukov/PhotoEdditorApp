@@ -28,4 +28,3 @@ extension TextInteractor: TextBusinessLogic {
         presenter.presentScreenData()
     }
 }
-

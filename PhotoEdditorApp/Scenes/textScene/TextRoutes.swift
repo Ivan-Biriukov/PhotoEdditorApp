@@ -5,4 +5,3 @@ import Foundation
 protocol TextRoutes {
     static func textScreen(with context: TextView.ViewModel)
 }
-
