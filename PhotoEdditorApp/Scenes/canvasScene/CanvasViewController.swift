@@ -37,6 +37,11 @@ final class CanvasViewController: UIViewController {
         super.viewDidLoad()
         interactor.showInitialData()
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        contentView.prepareImage()
+    }
 }
 
 // MARK: - Confirming to DisplayCanvasViewController

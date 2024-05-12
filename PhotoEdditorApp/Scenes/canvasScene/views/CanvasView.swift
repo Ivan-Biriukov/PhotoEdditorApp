@@ -17,6 +17,7 @@ final class CanvasView: UIView {
     // MARK: - Properties
     
     private var closeAction: (() -> Void)?
+    private var currentImage: UIImage?
         
     private let actionBar = UIToolbar()
     private let canvasView = PKCanvasView()
@@ -39,6 +40,13 @@ final class CanvasView: UIView {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: - Methods
+    
+    func prepareImage() {
+        let resizedImage = currentImage?.imageResized(to: canvasView.frame.size)
+        canvasView.backgroundColor = UIColor(patternImage: resizedImage!)
     }
 }
 
@@ -124,6 +132,7 @@ extension CanvasView: ViewModelConfigurable {
     }
     
     func configure(with viewModel: ViewModel) {
+        currentImage = viewModel.edditingImage
         if let edditingImage = viewModel.edditingImage {
             let resizedImage = edditingImage.imageResized(to: CGSize(width: SizeCalculator.deviceWidth, height: SizeCalculator.deviceHeight - 200))
             canvasView.backgroundColor = UIColor(patternImage: resizedImage)

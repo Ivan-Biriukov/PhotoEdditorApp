@@ -19,8 +19,11 @@ final class TextView: UIView {
     
     // MARK: - Properties
     
+    private var textViewStartFrameSize: CGSize = .init(width: 0, height: 0)
+    
     private var closeAction: (() -> Void)?
     private var showColorPickerAction: (() -> Void)?
+    private var scaledFontSize: CGFloat = 0
     
     private let pinchGesture = UIPinchGestureRecognizer()
     private let panGesture = UIPanGestureRecognizer()
@@ -60,6 +63,17 @@ final class TextView: UIView {
     
     func changeTextColor(with newColor: UIColor) {
         textView.textColor = newColor
+    }
+    
+    private func calculateProportionalFontSize(baseFontSize: CGFloat, baseSize: CGSize, newSize: CGSize) -> CGFloat {
+        let baseWidth = baseSize.width
+        let baseHeight = baseSize.height
+        let newWidth = newSize.width
+        let newHeight = newSize.height
+        let widthRatio = newWidth / baseWidth
+        let heightRatio = newHeight / baseHeight
+        let scaleFactor = min(widthRatio, heightRatio)
+        return baseFontSize * scaleFactor
     }
 }
 
@@ -109,14 +123,19 @@ private extension TextView {
 private extension TextView {
     @objc func addTextTaped() {
         currentImageView.addSubview(textView)
-        textView.frame.size = CGSize(width: currentImageView.bounds.width / 2, height: currentImageView.bounds.height / 3)
         textView.center = currentImageView.center
         textView.font = Constants.textViewStartFont
         textView.textColor = .white
         textView.text = "Введите текст"
         textView.layer.borderColor = UIColor.white.cgColor
-        textView.layer.borderWidth = 5
+        textView.layer.borderWidth = 1
+        
+        let textWidth = textView.text.width(withFont: Constants.textViewStartFont)
+        let textHeight = textView.text.height(withFont: Constants.textViewStartFont, width: textWidth)
+        
+        textView.frame.size = CGSize(width: textWidth, height: textHeight)
         textView.becomeFirstResponder()
+        textViewStartFrameSize = CGSize(width: textWidth, height: textHeight)
     }
     
     @objc func handlePinchGesture(_ gesture: UIPinchGestureRecognizer) {
@@ -125,6 +144,7 @@ private extension TextView {
         if gesture.state == .changed {
             let scale = gesture.scale
             textView.transform = textView.transform.scaledBy(x: scale, y: scale)
+            scaledFontSize = calculateProportionalFontSize(baseFontSize: 25, baseSize: textViewStartFrameSize, newSize: textView.frame.size)
             gesture.scale = 1.0
         }
     }
@@ -142,15 +162,24 @@ private extension TextView {
             break
         }
     }
-    
+
     @objc func saveTaped() {
         let image = currentImageView.image
         
         UIGraphicsBeginImageContextWithOptions(currentImageView.frame.size, false, 0.0)
         image?.draw(in: CGRect(x: 0, y: 0, width: currentImageView.frame.size.width, height: currentImageView.frame.size.height))
-        let textOrigin = textView.convert(textView.bounds.origin, to: currentImageView)
-        let textRect = CGRect(x: textOrigin.x, y: textOrigin.y, width: textView.frame.size.width, height: textView.frame.size.height)
-        textView.text.draw(in: textRect)
+        
+        let scale = currentImageView.contentScaleFactor
+        let textOrigin = CGPoint(x: textView.frame.origin.x * scale, y: textView.frame.origin.y * scale)
+        let textRect = CGRect(x: textOrigin.x, y: textOrigin.y, width: textView.frame.size.width * scale, height: textView.frame.size.height * scale)
+        
+        let textAttributes = [
+            NSAttributedString.Key.foregroundColor: textView.textColor!,
+            NSAttributedString.Key.font: AppFonts.getFont(ofsize: scaledFontSize, weight: .bold)
+        ]
+        
+        textView.text.draw(in: textRect, withAttributes: textAttributes)
+        
         let newImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         
@@ -162,6 +191,7 @@ private extension TextView {
         }
         closeAction?()
     }
+
     
     @objc func closeButtonTaped() {
         closeAction?()

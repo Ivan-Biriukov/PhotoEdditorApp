@@ -98,7 +98,7 @@ extension MainViewPresenter: PresentsMainViewProtocol {
                         font: AppFonts.medium15,
                         cornerRadius: 12,
                         height: 30,
-                        action: {}
+                        action: viewController?.presentSuccessAlert
                     ),
                     addFilterButton: .init(
                         title: "Добавить фильтр",

@@ -12,6 +12,7 @@ protocol DisplayMainViewController: AnyObject {
     func presentFiltersView()
     func presentTextEdditingView()
     func cleanPhotoImage()
+    func presentSuccessAlert()
     func shareImage()
 }
 
@@ -67,6 +68,14 @@ private extension MainViewController {
 // MARK: - DisplayMainViewController
 
 extension MainViewController: DisplayMainViewController {
+    func presentSuccessAlert() {
+        let alert = UIAlertController(title: "Сохранено", message: "Ваше изображение было успешно сохранено в галерею устройства.", preferredStyle: .alert)
+        let doneAction = UIAlertAction(title: "Ok", style: .default)
+        alert.addAction(doneAction)
+        
+        self.present(alert, animated: true)
+    }
+    
     func displayInitialData(with viewModel: MainView.ViewModel) {
         contentView.configure(with: viewModel)
     }
