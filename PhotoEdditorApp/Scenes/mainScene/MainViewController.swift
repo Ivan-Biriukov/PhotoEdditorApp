@@ -10,6 +10,7 @@ protocol DisplayMainViewController: AnyObject {
     func presentCameraPhoto()
     func presentCanvasView()
     func presentFiltersView()
+    func presentTextEdditingView()
     func cleanPhotoImage()
     func shareImage()
 }
@@ -93,6 +94,12 @@ extension MainViewController: DisplayMainViewController {
     func presentFiltersView() {
         if contentView.isEnableToEddit {
             interactor.showFilters(with: .init(edditingImage: contentView.returnCurrentImage()!))
+        }
+    }
+    
+    func presentTextEdditingView() {
+        if contentView.isEnableToEddit {
+            interactor.showText(with: .init(currentImage: contentView.returnCurrentImage()!))
         }
     }
     

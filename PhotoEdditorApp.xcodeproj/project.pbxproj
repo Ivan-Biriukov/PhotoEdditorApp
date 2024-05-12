@@ -46,6 +46,12 @@
 		570F9E0F2BEFF03D00346C63 /* FiltersFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570F9E0E2BEFF03D00346C63 /* FiltersFactory.swift */; };
 		570F9E112BEFF07600346C63 /* FilterRoutes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570F9E102BEFF07600346C63 /* FilterRoutes.swift */; };
 		570F9E132BF0056600346C63 /* FiltersCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570F9E122BF0056600346C63 /* FiltersCollectionViewCell.swift */; };
+		570F9E192BF0FB3E00346C63 /* TextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570F9E182BF0FB3E00346C63 /* TextViewController.swift */; };
+		570F9E1C2BF0FB8300346C63 /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570F9E1B2BF0FB8300346C63 /* TextView.swift */; };
+		570F9E1E2BF0FC0B00346C63 /* TextInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570F9E1D2BF0FC0B00346C63 /* TextInteractor.swift */; };
+		570F9E202BF0FC4800346C63 /* TextPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570F9E1F2BF0FC4800346C63 /* TextPresenter.swift */; };
+		570F9E222BF0FEA200346C63 /* TextFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570F9E212BF0FEA200346C63 /* TextFactory.swift */; };
+		570F9E242BF0FF5700346C63 /* TextRoutes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570F9E232BF0FF5700346C63 /* TextRoutes.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -89,6 +95,12 @@
 		570F9E0E2BEFF03D00346C63 /* FiltersFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiltersFactory.swift; sourceTree = "<group>"; };
 		570F9E102BEFF07600346C63 /* FilterRoutes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterRoutes.swift; sourceTree = "<group>"; };
 		570F9E122BF0056600346C63 /* FiltersCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiltersCollectionViewCell.swift; sourceTree = "<group>"; };
+		570F9E182BF0FB3E00346C63 /* TextViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextViewController.swift; sourceTree = "<group>"; };
+		570F9E1B2BF0FB8300346C63 /* TextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextView.swift; sourceTree = "<group>"; };
+		570F9E1D2BF0FC0B00346C63 /* TextInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextInteractor.swift; sourceTree = "<group>"; };
+		570F9E1F2BF0FC4800346C63 /* TextPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextPresenter.swift; sourceTree = "<group>"; };
+		570F9E212BF0FEA200346C63 /* TextFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFactory.swift; sourceTree = "<group>"; };
+		570F9E232BF0FF5700346C63 /* TextRoutes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextRoutes.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,6 +158,7 @@
 				570F9DC12BEE9DDE00346C63 /* mainScene */,
 				570F9DF22BEFB6D100346C63 /* canvasScene */,
 				570F9E042BEFEDDF00346C63 /* filtersScene */,
+				570F9E172BF0FB2400346C63 /* textScene */,
 				570F9DB52BEE9AC300346C63 /* LaunchScreen.storyboard */,
 			);
 			path = Scenes;
@@ -269,6 +282,27 @@
 			path = views;
 			sourceTree = "<group>";
 		};
+		570F9E172BF0FB2400346C63 /* textScene */ = {
+			isa = PBXGroup;
+			children = (
+				570F9E182BF0FB3E00346C63 /* TextViewController.swift */,
+				570F9E1A2BF0FB7400346C63 /* views */,
+				570F9E1D2BF0FC0B00346C63 /* TextInteractor.swift */,
+				570F9E1F2BF0FC4800346C63 /* TextPresenter.swift */,
+				570F9E212BF0FEA200346C63 /* TextFactory.swift */,
+				570F9E232BF0FF5700346C63 /* TextRoutes.swift */,
+			);
+			path = textScene;
+			sourceTree = "<group>";
+		};
+		570F9E1A2BF0FB7400346C63 /* views */ = {
+			isa = PBXGroup;
+			children = (
+				570F9E1B2BF0FB8300346C63 /* TextView.swift */,
+			);
+			path = views;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -347,13 +381,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				570F9DF42BEFB70400346C63 /* CanvasViewController.swift in Sources */,
+				570F9E242BF0FF5700346C63 /* TextRoutes.swift in Sources */,
 				570F9DE02BEEAAED00346C63 /* ViewWithTextViewModel.swift in Sources */,
 				570F9E0D2BEFEF1A00346C63 /* FiltersPresenter.swift in Sources */,
 				570F9DC52BEE9E9C00346C63 /* Router.swift in Sources */,
 				570F9DE32BEEAB6400346C63 /* MainButton.swift in Sources */,
+				570F9E1C2BF0FB8300346C63 /* TextView.swift in Sources */,
 				570F9E092BEFEE3E00346C63 /* FiltersView.swift in Sources */,
 				570F9DFD2BEFB8FE00346C63 /* CanvasFactory.swift in Sources */,
+				570F9E202BF0FC4800346C63 /* TextPresenter.swift in Sources */,
 				570F9E062BEFEDFE00346C63 /* FiltersViewController.swift in Sources */,
+				570F9E1E2BF0FC0B00346C63 /* TextInteractor.swift in Sources */,
 				570F9E132BF0056600346C63 /* FiltersCollectionViewCell.swift in Sources */,
 				570F9DFB2BEFB89500346C63 /* CanvasPresenter.swift in Sources */,
 				570F9DF12BEFB62100346C63 /* ImageButton.swift in Sources */,
@@ -369,12 +407,14 @@
 				570F9E112BEFF07600346C63 /* FilterRoutes.swift in Sources */,
 				570F9E032BEFDDB100346C63 /* UIImage+Extension.swift in Sources */,
 				570F9DED2BEECB2200346C63 /* AppImages.swift in Sources */,
+				570F9E192BF0FB3E00346C63 /* TextViewController.swift in Sources */,
 				570F9DE92BEEC62D00346C63 /* AppFonts.swift in Sources */,
 				570F9DC72BEE9EC300346C63 /* Factory.swift in Sources */,
 				570F9E0B2BEFEE9A00346C63 /* FiltersInteractor.swift in Sources */,
 				570F9DCE2BEE9F8900346C63 /* MainViewInteractor.swift in Sources */,
 				570F9DF62BEFB75100346C63 /* CanvasView.swift in Sources */,
 				570F9E012BEFBBDA00346C63 /* CanvasRoutes.swift in Sources */,
+				570F9E222BF0FEA200346C63 /* TextFactory.swift in Sources */,
 				570F9DC92BEE9EE200346C63 /* ViewModelConfigurable.swift in Sources */,
 				570F9DE52BEEAB8900346C63 /* MainButtonViewModel.swift in Sources */,
 				570F9DDE2BEEAABE00346C63 /* ViewWithText.swift in Sources */,
